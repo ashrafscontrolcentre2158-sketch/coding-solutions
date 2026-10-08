@@ -4,30 +4,35 @@
 #include <stdlib.h>
 //Complete the following function.
 
+ void calculate_the_maximum(int n, int k)
+{
+    int max_and = 0;
+    int max_or = 0;
+    int max_xor = 0;
 
-void calculate_the_maximum(int n, int k) {
-    
-    int i,j,M1=0,M2=0,M3=0;
-    for(i=1;i<=n;i++)
-        for(j=i+1;j<=n;j++)
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = i + 1; j <= n; j++)
         {
-            int and=i&j;
-            int or=i|j;
-            int xor=i^j;
-            
-            if(and<k && M1<and)
-                    M1=and;
-            if(or<k && M2<or)
-                   M2=or;
-        if(xor<k && M3<xor)
-                    M3=xor;
-                                  
-            
+            int andValue = i & j;
+            int orValue = i | j;
+            int xorValue = i ^ j;
+
+            if (andValue < k && andValue > max_and)
+                max_and = andValue;
+
+            if (orValue < k && orValue > max_or)
+                max_or = orValue;
+
+            if (xorValue < k && xorValue > max_xor)
+                max_xor = xorValue;
         }
-printf("%d\n",M1);
-printf("%d\n",M2);
-printf("%d\n",M3);
-  
+    }
+
+    printf("%d\n", max_and);
+    printf("%d\n", max_or);
+    printf("%d\n", max_xor);
+
 }
 
 int main() {
